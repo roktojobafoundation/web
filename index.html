@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJF Blood Connect - Roktojoba Foundation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon Links -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="favicon.png">
+</head>
+
+<body>
+    <!-- Header with Logo and Time -->
+    <header class="header">
+        <!-- Time and Date above the header content -->
+        <div class="container-fluid py-1 bg-light">
+            <div class="row">
+                <div class="col-6 text-start">
+                    <!-- Empty left side -->
+                </div>
+                <div class="col-6 text-end">
+                    <div id="currentDate" class="bangla-text date-display small"></div>
+                    <div id="currentTime" class="bangla-text time-display"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid py-2">
+            <div class="row align-items-center">
+                <div class="col-2">
+                    <img src="roktojoba-logo.png" alt="Roktojoba Foundation Logo" class="logo img-fluid">
+                </div>
+                <div class="col-8 text-center">
+                    <h2 class="mb-1">RJF Blood Connect</h2>
+                    <p class="tagline mb-0">
+                        <span class="badge bg-danger">
+                            <i class="fas fa-heart me-1"></i> Blood Donate. Connect. Save
+                        </span>
+                    </p>
+                </div>
+                <div class="col-2 text-end">
+                    <button class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+                        data-bs-target="#quickHelpModal">
+                        <i class="fas fa-question-circle"></i> সাহায্য
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Stats Banner -->
+    <div class="container-fluid bg-warning py-2" style="background-color: #FFD700 !important;">
+        <div class="row text-center">
+            <div class="col p-0">
+                <marquee behavior="scroll" direction="left" class="bangla-text small"
+                    style="color: #FF0000; font-weight: 500; font-size: 1.1rem;">
+                    <i class="fas fa-tint me-2"></i> আসসালামু আলাইকুম RJF Blood Connect অ্যাপ এ আপনাকে স্বাগতম ।। জরুরী
+                    রক্তের প্রয়োজন? <strong style="color: #000000;">01960 506 601</strong>
+                    নাম্বারে কল করুন অথবা <strong style="color: #0d00ff;">রক্তের অনুরোধ</strong> বাটনে ক্লিক করুন।
+                </marquee>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updated Stats Section -->
+    <div class="stats-section py-4">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Registered Donors -->
+                <div class="col-md-3 col-6">
+                    <div class="stat-card bg-white rounded-3 p-3 shadow-sm text-center h-100">
+                        <div class="stat-icon mb-2">
+                            <i class="fas fa-users fa-2x text-primary"></i>
+                        </div>
+                        <div class="stat-number fw-bold fs-3" id="donors-count">0</div>
+                        <div class="stat-label bangla-text text-muted">নিবন্ধিত রক্তদাতা</div>
+                    </div>
+                </div>
+
+                <!-- Blood Requests -->
+                <div class="col-md-3 col-6">
+                    <div class="stat-card bg-white rounded-3 p-3 shadow-sm text-center h-100">
+                        <div class="stat-icon mb-2">
+                            <i class="fas fa-hand-holding-medical fa-2x text-danger"></i>
+                        </div>
+                        <div class="stat-number fw-bold fs-3" id="requests-count">0</div>
+                        <div class="stat-label bangla-text text-muted">রক্তের অনুরোধ</div>
+                    </div>
+                </div>
+
+                <!-- Successful Donations -->
+                <div class="col-md-3 col-6">
+                    <div class="stat-card bg-white rounded-3 p-3 shadow-sm text-center h-100">
+                        <div class="stat-icon mb-2">
+                            <i class="fas fa-heartbeat fa-2x text-success"></i>
+                        </div>
+                        <div class="stat-number fw-bold fs-3" id="lives-saved">0</div>
+                        <div class="stat-label bangla-text text-muted">সফল রক্তদান</div>
+                    </div>
+                </div>
+
+                <!-- District Coverage -->
+                <div class="col-md-3 col-6">
+                    <div class="stat-card bg-white rounded-3 p-3 shadow-sm text-center h-100">
+                        <div class="stat-icon mb-2">
+                            <i class="fas fa-map-marked-alt fa-2x text-info"></i>
+                        </div>
+                        <div class="stat-number fw-bold fs-3" id="districts-covered">0</div>
+                        <div class="stat-label bangla-text text-muted">জেলা কভারেজ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container py-3">
+        <!-- Features Section -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="row g-2">
+                    <!-- Donor Registration Card -->
+                    <div class="col-md-3 col-6">
+                        <a href="donor-registration.html" class="feature-card">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="mb-2">
+                                        <i class="fas fa-user-plus feature-icon"></i>
+                                        <h6 class="card-title mb-0">রক্তদাতা নিবন্ধন</h6>
+                                    </div>
+                                    <span class="btn btn-sm btn-primary mt-auto">
+                                        <i class="fas fa-arrow-right"></i> নিবন্ধন করুন
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Blood Request Card -->
+                    <div class="col-md-3 col-6">
+                        <a href="blood-request.html" class="feature-card">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="mb-2">
+                                        <i class="fas fa-tint feature-icon"></i>
+                                        <h6 class="card-title mb-0">রক্তের অনুরোধ</h6>
+                                    </div>
+                                    <span class="btn btn-sm btn-primary mt-auto">
+                                        <i class="fas fa-arrow-right"></i> অনুরোধ করুন
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Find Donor Card -->
+                    <div class="col-md-3 col-6">
+                        <a href="donor-search.html" class="feature-card">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column">
+                                    <div class="mb-2">
+                                        <i class="fas fa-search feature-icon"></i>
+                                        <h6 class="card-title mb-0">রক্তদাতা খুঁজুন</h6>
+                                    </div>
+                                    <span class="btn btn-sm btn-primary mt-auto">
+                                        <i class="fas fa-arrow-right"></i> খুঁজুন
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Update Donation Date Card -->
+                    <div class="col-md-3 col-6">
+                        <div class="card h-100 text-center">
+                            <div class="card-body d-flex flex-column">
+                                <div class="mb-2">
+                                    <i class="fas fa-calendar-alt feature-icon"></i>
+                                    <h6 class="card-title mb-0">রক্তদাতার তথ্য আপডেট</h6>
+                                </div>
+                                <button class="btn btn-sm btn-primary mt-auto" data-bs-toggle="modal"
+                                    data-bs-target="#updateDonationModal">
+                                    <i class="fas fa-edit"></i> আপডেট করুন
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Blood Requests Section - Improved -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="section-title"><i class="fas fa-hand-holding-medical feature-icon"></i> সাম্প্রতিক রক্তের
+                    অনুরোধ</h2>
+                <div class="loading-spinner" id="requestsLoading">
+                    <div class="spinner-border spinner" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="bangla-text">অনুরোধের তথ্য লোড করা হচ্ছে...</p>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="requestsList">
+                    <!-- Request cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Successful Donations Section - Enhanced -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <h2 class="section-title"><i class="fas fa-heartbeat feature-icon"></i> সফল রক্তদানের গল্প</h2>
+                <div class="loading-spinner" id="successStoriesLoading">
+                    <div class="spinner-border spinner" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="bangla-text">সফল রক্তদানের তথ্য লোড করা হচ্ছে...</p>
+                </div>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="successStoriesList">
+                    <!-- Success story cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Add this button below the Emergency Section -->
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#voteDonationModal">
+                    <i class="fas fa-check-circle me-2"></i> সফল রক্তদান রিপোর্ট করুন
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Donation Date Modal -->
+    <div class="modal fade" id="updateDonationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title bangla-text fs-5">
+                        <i class="fas fa-calendar-alt me-2"></i> রক্তদাতার তথ্য আপডেট করুন
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body p-4">
+                    <!-- Information Alert -->
+                    <div class="alert alert-info bangla-text small mb-4">
+                        <i class="fas fa-info-circle me-2"></i> রক্তদানের পরবর্তী ৩ মাস আবার রক্ত দিতে পারবেন না। সঠিক
+                        তারিখ লিখুন।
+                    </div>
+
+                    <!-- Update Form -->
+                    <form id="updateDonationForm" class="needs-validation" novalidate>
+                        <!-- Registered Phone -->
+                        <div class="mb-3">
+                            <label for="donorPhoneUpdate" class="form-label bangla-text fw-medium">
+                                <i class="fas fa-mobile-alt me-1 text-muted"></i> মোবাইল নম্বর (নিবন্ধিত) <span
+                                    class="text-danger">*</span>
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light">+88</span>
+                                <input type="tel" class="form-control rounded-end" id="donorPhoneUpdate"
+                                    placeholder="01XXXXXXXXX" required pattern="^(01[3-9]\d{8})$">
+                            </div>
+                            <div class="invalid-feedback bangla-text small">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Update Fields Section -->
+                        <h6 class="bangla-text mb-3 text-primary fw-medium">
+                            <i class="fas fa-edit me-1"></i> পরিবর্তন করতে চান এমন তথ্য
+                        </h6>
+
+                        <!-- Division Update -->
+                        <div class="mb-3">
+                            <label for="updateDivision" class="form-label bangla-text fw-medium">
+                                <i class="fas fa-map-marker-alt me-1 text-muted"></i> বিভাগ
+                            </label>
+                            <select class="form-select shadow-none" id="updateDivision">
+                                <option value="" selected disabled>বিভাগ নির্বাচন করুন</option>
+                                <!-- Divisions will be populated by JavaScript -->
+                            </select>
+                        </div>
+
+                        <!-- District Update -->
+                        <div class="mb-3">
+                            <label for="updateDistrict" class="form-label bangla-text fw-medium">
+                                <i class="fas fa-map-marker-alt me-1 text-muted"></i> জেলা
+                            </label>
+                            <select class="form-select shadow-none" id="updateDistrict" disabled>
+                                <option value="" selected disabled>জেলা নির্বাচন করুন</option>
+                            </select>
+                        </div>
+
+                        <!-- Upazila Update -->
+                        <div class="mb-3">
+                            <label for="updateUpazila" class="form-label bangla-text fw-medium">
+                                <i class="fas fa-map-marker-alt me-1 text-muted"></i> উপজেলা
+                            </label>
+                            <select class="form-select shadow-none" id="updateUpazila" disabled>
+                                <option value="" selected disabled>উপজেলা নির্বাচন করুন</option>
+                            </select>
+                        </div>
+
+                        <!-- Phone Update -->
+                        <div class="mb-3">
+                            <label for="updatePhone" class="form-label bangla-text fw-medium">
+                                <i class="fas fa-phone me-1 text-muted"></i> নতুন মোবাইল নম্বর
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light">+88</span>
+                                <input type="tel" class="form-control rounded-end" id="updatePhone"
+                                    placeholder="01XXXXXXXXX" pattern="^(01[3-9]\d{8})$">
+                            </div>
+                            <small class="text-muted small bangla-text">একটি সচল WhatsApp নম্বর অবশ্যই প্রদান
+                                করুন</small>
+                            <div class="invalid-feedback bangla-text small">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <!-- Last Donation Date -->
+                        <div class="mb-4">
+                            <label for="lastDonationUpdate" class="form-label bangla-text fw-medium">
+                                <i class="fas fa-calendar-day me-1 text-muted"></i> সর্বশেষ রক্তদানের তারিখ <span
+                                    class="text-danger">*</span>
+                            </label>
+                            <input type="date" class="form-control shadow-none" id="lastDonationUpdate" required>
+                            <div class="invalid-feedback bangla-text small">তারিখ নির্বাচন করুন</div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100 bangla-text fw-medium py-2">
+                            <i class="fas fa-save me-2"></i> তথ্য আপডেট করুন
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vote Donation Modal -->
+    <div class="modal fade" id="voteDonationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title bangla-text">
+                        <i class="fas fa-check-circle me-2"></i> সফল রক্তদান রিপোর্ট করুন
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success bangla-text small mb-3">
+                        <i class="fas fa-lightbulb me-2"></i> রক্তদান সফল হলে অবশ্যই রিপোর্ট করুন। এতে আমাদের ডাটাবেস
+                        আপডেট হবে এবং অন্যান্য ব্যবহারকারীরা সঠিক তথ্য পাবে।
+                    </div>
+                    <form id="voteDonationForm">
+                        <div class="mb-3">
+                            <label for="requestPhone" class="form-label bangla-text">
+                                <i class="fas fa-phone me-1"></i> অনুরোধকারীর মোবাইল নম্বর
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">+88</span>
+                                <input type="tel" class="form-control" id="requestPhone" placeholder="01XXXXXXXXX"
+                                    required pattern="^(01[3-9]\d{8})$">
+                            </div>
+                            <div class="invalid-feedback bangla-text">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="donorPhone" class="form-label bangla-text">
+                                <i class="fas fa-user me-1"></i> রক্তদাতার মোবাইল নম্বর
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text">+88</span>
+                                <input type="tel" class="form-control" id="donorPhone" placeholder="01XXXXXXXXX"
+                                    required pattern="^(01[3-9]\d{8})$">
+                            </div>
+                            <div class="invalid-feedback bangla-text">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="donationDate" class="form-label bangla-text">
+                                <i class="fas fa-calendar-check me-1"></i> রক্তদানের তারিখ
+                            </label>
+                            <input type="date" class="form-control" id="donationDate" required>
+                            <div class="invalid-feedback bangla-text">তারিখ নির্বাচন করুন</div>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100 bangla-text">
+                            <i class="fas fa-paper-plane me-1"></i> জমা দিন
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Help Modal - Improved Version -->
+    <div class="modal fade" id="quickHelpModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title bangla-text">
+                        <i class="fas fa-question-circle me-2"></i> দ্রুত সাহায্য কেন্দ্র
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="accordion" id="helpAccordion">
+                        <!-- How to Find Donors -->
+                        <div class="accordion-item border-top-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpOne" aria-expanded="true">
+                                    <i class="fas fa-search me-2 text-primary"></i> কিভাবে রক্তদাতা খুঁজব?
+                                </button>
+                            </h2>
+                            <div id="helpOne" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-primary bangla-text small">
+                                        <i class="fas fa-lightbulb me-2"></i> রক্তদাতা খুঁজে পেতে এই সহজ ধাপগুলো অনুসরণ
+                                        করুন
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজে
+                                            <strong>"রক্তদাতা খুঁজুন"</strong> বাটনে ক্লিক করুন
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনার <strong>বিভাগ,
+                                                জেলা এবং রক্তের গ্রুপ</strong> নির্বাচন করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">
+                                            <strong>"খুঁজুন"</strong> বাটনে ক্লিক করুন
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">প্রাপ্ত রক্তদাতাদের
+                                            তালিকা থেকে <strong>সরাসরি কল করুন বা WhatsApp</strong> করুন</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <a href="donor-search.html" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-search me-1"></i> এখনই রক্তদাতা খুঁজুন
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Request Blood -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpTwo">
+                                    <i class="fas fa-tint me-2 text-danger"></i> রক্তের অনুরোধ কিভাবে করব?
+                                </button>
+                            </h2>
+                            <div id="helpTwo" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-danger bangla-text small">
+                                        <i class="fas fa-exclamation-triangle me-2"></i> জরুরী রক্তের প্রয়োজন হলে এই
+                                        পদ্ধতি অনুসরণ করুন
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজে
+                                            <strong>"রক্তের অনুরোধ"</strong> বাটনে ক্লিক করুন
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">ফর্মটি পূরণ করুন:
+                                            <ul class="mt-2">
+                                                <li>বিভাগ, জেলা, উপজেলা</li>
+                                                <li>হাসপাতাল/রক্তদানের স্থান</li>
+                                                <li>রক্তের গ্রুপ ও পরিমাণ</li>
+                                                <li><strong>সচল WhatsApp নম্বর</strong> (অবশ্যই প্রদান করুন)</li>
+                                                <li>প্রয়োজনীয় তারিখ ও সময়</li>
+                                            </ul>
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0"><strong>"অনুরোধ
+                                                পাঠান"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">WhatsApp/SMS এর মাধ্যমে
+                                            নিশ্চিত করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনার অনুরোধ সিস্টেমে
+                                            যুক্ত হবে এবং সংশ্লিষ্ট রক্তদাতাদের কাছে বিজ্ঞপ্তি পাঠানো হবে</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <a href="blood-request.html" class="btn btn-sm btn-danger">
+                                            <i class="fas fa-tint me-1"></i> এখনই রক্তের অনুরোধ করুন
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Register as Donor -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpThree">
+                                    <i class="fas fa-user-plus me-2 text-success"></i> রক্তদাতা হিসেবে নিবন্ধন কিভাবে
+                                    করব?
+                                </button>
+                            </h2>
+                            <div id="helpThree" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-success bangla-text small">
+                                        <i class="fas fa-heart me-2"></i> জীবন বাঁচাতে রক্তদাতা হিসেবে নিবন্ধন করুন
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজে
+                                            <strong>"রক্তদাতা নিবন্ধন"</strong> বাটনে ক্লিক করুন
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">ফর্মটি পূরণ করুন:
+                                            <ul class="mt-2">
+                                                <li>পূর্ণ নাম ও রক্তের গ্রুপ</li>
+                                                <li><strong>সচল WhatsApp নম্বর</strong> (অবশ্যই প্রদান করুন)</li>
+                                                <li>পূর্বে কতবার রক্ত দান করেছেন (প্রথমবার হলে 0 রাখুন)</li>
+                                                <li>সর্বশেষ রক্তদানের তারিখ (প্রথমবার হলে ফাঁকা রাখুন)</li>
+                                                <li>বর্তমান ঠিকানা (বিভাগ, জেলা, উপজেলা)</li>
+                                            </ul>
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0"><strong>"নিবন্ধন
+                                                করুন"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনার তথ্য ডাটাবেসে
+                                            সংরক্ষিত হবে</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">কেউ আপনার রক্তের গ্রুপ
+                                            চাইলে আপনাকে কল করতে পারবে</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <a href="donor-registration.html" class="btn btn-sm btn-success">
+                                            <i class="fas fa-user-plus me-1"></i> এখনই নিবন্ধন করুন
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Update Donation Date -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpFour">
+                                    <i class="fas fa-calendar-alt me-2 text-info"></i> রক্তদাতার তথ্য আপডেট কিভাবে করব?
+                                </button>
+                            </h2>
+                            <div id="helpFour" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-info bangla-text small">
+                                        <i class="fas fa-info-circle me-2"></i> রক্তদানের পর ৩ মাস পর আবার রক্ত দিতে
+                                        পারবেন। সঠিক তারিখ আপডেট করলে অন্যরা আপনাকে খুঁজে পাবে।
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজের নিচে
+                                            <strong>"রক্তদাতার তথ্য আপডেট"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনার <strong>নিবন্ধিত
+                                                মোবাইল নম্বর</strong> লিখুন (যে নম্বর দিয়ে রেজিস্ট্রেশন করেছেন)</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">আপনি চাইলে অন্যান্য
+                                            তথ্য আপডেট করতে পারেন:
+                                            <ul class="mt-2">
+                                                <li>বর্তমান বিভাগ/জেলা/উপজেলা</li>
+                                                <li>নতুন মোবাইল নম্বর (যদি পরিবর্তন করেন)</li>
+                                            </ul>
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">সর্বশেষ রক্তদানের
+                                            <strong>সঠিক তারিখ</strong> নির্বাচন করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0"><strong>"আপডেট
+                                                করুন"</strong> বাটনে ক্লিক করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">সফলভাবে আপডেট হলে একটি
+                                            কনফার্মেশন মেসেজ দেখাবে</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">এখন থেকে ৩ মাস পর আবার
+                                            রক্তদানের জন্য উপযুক্ত বলে বিবেচিত হবেন</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+                                            data-bs-target="#updateDonationModal">
+                                            <i class="fas fa-calendar-alt me-1"></i> এখনই রক্তদাতার তথ্য আপডেট করুন
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-warning mt-3 bangla-text small">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>
+                                        <strong>মনে রাখবেন:</strong> ভুল তারিখ দিলে অন্যরা আপনাকে অপ্রয়োজনে কল করতে
+                                        পারে। তাই সর্বশেষ রক্তদানের সঠিক তারিখ দিন।
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- How to Report Successful Donation -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bangla-text fw-medium" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#helpFive">
+                                    <i class="fas fa-check-circle me-2 text-success"></i> সফল রক্তদান রিপোর্ট কিভাবে
+                                    করব?
+                                </button>
+                            </h2>
+                            <div id="helpFive" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body small bangla-text bg-light">
+                                    <div class="alert alert-success bangla-text small">
+                                        <i class="fas fa-heartbeat me-2"></i> সফল রক্তদান রিপোর্ট করলে আমাদের ডাটাবেস
+                                        আপডেট হয়
+                                    </div>
+                                    <ol class="list-group list-group-numbered">
+                                        <li class="list-group-item border-0 bg-transparent ps-0">হোম পেইজের নিচে
+                                            <strong>"সফল রক্তদান রিপোর্ট করুন"</strong> বাটনে ক্লিক করুন
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">অনুরোধকারীর
+                                            <strong>সঠিক মোবাইল নম্বর</strong> লিখুন
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">রক্তদাতার
+                                            <strong>নিবন্ধিত মোবাইল নম্বর</strong> লিখুন
+                                        </li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0">রক্তদানের <strong>সঠিক
+                                                তারিখ</strong> নির্বাচন করুন</li>
+                                        <li class="list-group-item border-0 bg-transparent ps-0"><strong>"জমা
+                                                দিন"</strong> বাটনে ক্লিক করুন</li>
+                                    </ol>
+                                    <div class="mt-3 text-center">
+                                        <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#voteDonationModal">
+                                            <i class="fas fa-check-circle me-1"></i> এখনই রিপোর্ট করুন
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact Section -->
+                    <div class="p-3 bg-light border-top">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h6 class="bangla-text mb-1">
+                                    <i class="fas fa-headset me-2 text-primary"></i> জরুরী সাহায্য প্রয়োজন?
+                                </h6>
+                                <p class="small bangla-text mb-0">সরাসরি আমাদের হেল্পলাইনে কল করুন</p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <a href="tel:01960506601" class="btn btn-primary w-100 bangla-text">
+                                    <i class="fas fa-phone me-1"></i> 01960506601
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navigation">
+        <div class="icons">
+            <input type="radio" name="nav" id="nav-home" class="nav-radio" />
+            <label for="nav-home" class="nav-icon" onclick="window.location.href='index.html'">
+                <i class="fas fa-home"></i>
+                <span class="nav-text bangla-text">হোম</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-register" class="nav-radio" />
+            <label for="nav-register" class="nav-icon" onclick="window.location.href='donor-registration.html'">
+                <i class="fas fa-user-plus"></i>
+                <span class="nav-text bangla-text">নিবন্ধন</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-request" class="nav-radio" />
+            <label for="nav-request" class="nav-icon" onclick="window.location.href='blood-request.html'">
+                <i class="fas fa-tint"></i>
+                <span class="nav-text bangla-text">অনুরোধ</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-search" class="nav-radio" />
+            <label for="nav-search" class="nav-icon" onclick="window.location.href='donor-search.html'">
+                <i class="fas fa-search"></i>
+                <span class="nav-text bangla-text">খুঁজুন</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-info" class="nav-radio" />
+            <label for="nav-info" class="nav-icon" onclick="window.location.href='information.html'">
+                <i class="fas fa-info-circle"></i>
+                <span class="nav-text bangla-text">তথ্য</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Emergency WhatsApp Button -->
+    <a href="emergency-contact.html" class="emergency-btn">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="btn btn-danger btn-back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Developer Credit -->
+    <div class="text-center mt-4 small text-muted">
+        Developed by MD Tasrik Hossain |
+        <a href="https://www.facebook.com/md.tasrik.hossain" class="text-decoration-none">Contact Developer</a>
+    </div>
+
+    <!-- Firebase and other scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+        import {
+            getFirestore,
+            collection,
+            getDocs,
+            query,
+            orderBy,
+            limit,
+            updateDoc,
+            doc,
+            where,
+            writeBatch,
+            addDoc
+        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBSgyeYCbyB8cMFdqMcNtDZeL4aM-_FfQ4",
+            authDomain: "rjf-blood-connect.firebaseapp.com",
+            databaseURL: "https://rjf-blood-connect-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "rjf-blood-connect",
+            storageBucket: "rjf-blood-connect.firebasestorage.app",
+            messagingSenderId: "536870508483",
+            appId: "1:536870508483:web:1ce2211ec28f79ce514f76",
+            measurementId: "G-34RDD8GL9C"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // Bangladesh administrative data
+        const bangladeshData = {
+            divisions: [
+                {
+                    name: "ঢাকা",
+                    districts: [
+                        { name: "ঢাকা", upazilas: ["চক (বাতিল)", "আদাবর", "বাড্ডা", "বংশাল", "বিমান বন্দর", "বনানী", "ক্যান্টনমেন্ট", "চকবাজার", "দক্ষিণখান", "দারুসসালাম", "ডেমরা", "ধামরাই", "ধানমন্ডি", "দোহার", "ভাষানটেক", "ভাটারা", "গেন্ডারিয়া", "গুলশান", "হাতিরঝিল", "হাজারীবাগ", "যাত্রাবাড়ী", "কাফরুল", "কদমতলী", "কলাবাগান", "কামরাঙ্গীর চর", "খিলগাঁও", "খিলক্ষেত", "কেরানীগঞ্জ", "কোতয়ালী", "লালবাগ", "মিরপুর", "মোহাম্মদপুর", "মতিঝিল", "মুগদা", "নবাবগঞ্জ", "নিউ মার্কেট", "পল্লবী", "পল্টন", "রমনা", "রামপুরা", "সবুজবাগ", "রুপনগর", "সাভার", "শাহজাহানপুর", "শাহ্ আলী", "শাহবাগ", "শ্যামপুর", "শেরে বাংলা নগর", "সুত্রাপুর", "তেজগাঁও", "তেজগাঁও শিল্প এলাকা", "তুরাগ", "উত্তরা পশ্চিম", "উত্তরা পূর্ব", "উত্তর খান", "ওয়ারী"] },
+                        { name: "ফরিদপুর", upazilas: ["আলফাডাঙ্গা", "ভাঙ্গা", "বোয়ালমারী", "চরভদ্রাসন", "ফরিদপুর সদর", "মধুখালী", "নগরকান্দা", "সদরপুর", "সালথা"] },
+                        { name: "গাজীপুর", upazilas: ["গাজীপুর সদর", "কালিয়াকৈর", "কাপাসিয়া", "শ্রীপুর", "কালীগঞ্জ"] },
+                        { name: "গোপালগঞ্জ", upazilas: ["গোপালগঞ্জ সদর", "কাশিয়ানি", "কোটালীপাড়া", "মুকসুদপুর", "টুংগীপাড়া"] },
+                        { name: "কিশোরগঞ্জ", upazilas: ["অষ্টগ্রাম", "বাজিতপুর", "ভৈরব", "হোসেনপুর", "ইটনা", "করিমগঞ্জ", "কটিয়াদী", "কিশোরগঞ্জ সদর", "কুলিয়ারচর", "মিঠামইন", "নিকলী", "পাকুন্দিয়া", "তাড়াইল"] },
+                        { name: "মাদারীপুর", upazilas: ["কালকিনি", "মাদারীপুর সদর", "রাজৈর", "শিবচর"] },
+                        { name: "মানিকগঞ্জ", upazilas: ["দৌলতপুর", "ঘিওর", "হরিরামপুর", "মানিকগঞ্জ সদর", "সাটুরিয়া", "শিবালয়", "সিংগাইর"] },
+                        { name: "মুন্সিগঞ্জ", upazilas: ["গজারিয়া", "লৌহজং", "মুন্সিগঞ্জ সদর", "সিরাজদিখান", "শ্রীনগর", "টঙ্গীবাড়ি"] },
+                        { name: "নারায়ণগঞ্জ", upazilas: ["আড়াইহাজার", "বন্দর", "নারায়ণগঞ্জ সদর", "রূপগঞ্জ", "সোনারগাঁ"] },
+                        { name: "নরসিংদী", upazilas: ["বেলাবো", "মনোহরদী", "নরসিংদী সদর", "পলাশ", "রায়পুরা", "শিবপুর"] },
+                        { name: "রাজবাড়ী", upazilas: ["বালিয়াকান্দি", "গোয়ালন্দ", "পাংশা", "রাজবাড়ী সদর"] },
+                        { name: "শরীয়তপুর", upazilas: ["ভেদরগঞ্জ", "দামুদ্যা", "গোসাইরহাট", "নড়িয়া", "শরীয়তপুর সদর", "জাজিরা"] },
+                        { name: "টাঙ্গাইল", upazilas: ["বাসাইল", "ভুয়াপুর", "দেলদুয়ার", "ধনবাড়ী", "ঘাটাইল", "গোপালপুর", "কালিহাতী", "মধুপুর", "মির্জাপুর", "নাগরপুর", "সখিপুর", "টাঙ্গাইল সদর"] }
+                    ]
+                },
+                {
+                    name: "চট্টগ্রাম",
+                    districts: [
+                        { name: "বান্দরবান", upazilas: ["আলীকদম", "বান্দরবান সদর", "লামা", "নাইক্ষ্যংছড়ি", "রোয়াংছড়ি", "রুমা", "থানচি"] },
+                        { name: "ব্রাহ্মণবাড়িয়া", upazilas: ["আখাউড়া", "বাঞ্ছারামপুর", "ব্রাহ্মণবাড়িয়া সদর", "কসবা", "নবীনগর", "নাসিরনগর", "সরাইল", "আশুগঞ্জ", "বিজয়নগর"] },
+                        { name: "চাঁদপুর", upazilas: ["চাঁদপুর সদর", "ফরিদগঞ্জ", "হাইমচর", "হাজীগঞ্জ", "কচুয়া", "মতলব দক্ষিণ", "মতলব উত্তর", "শাহরাস্তি"] },
+                        { name: "চট্টগ্রাম", upazilas: ["আনোয়ারা", "বাঁশখালী", "বোয়ালখালী", "চন্দনাইশ", "ফটিকছড়ি", "হাটহাজারী", "লোহাগাড়া", "মীরসরাই", "পটিয়া", "রাঙ্গুনিয়া", "রাউজান", "সন্দ্বীপ", "সাতকানিয়া", "সীতাকুণ্ড"] },
+                        { name: "কুমিল্লা", upazilas: ["বরুড়া", "ব্রাহ্মণপাড়া", "বুড়িচং", "চান্দিনা", "চৌদ্দগ্রাম", "দাউদকান্দি", "দেবীদ্বার", "হোমনা", "কুমিল্লা সদর", "লাকসাম", "মনোহরগঞ্জ", "মেঘনা", "মুরাদনগর", "নাঙ্গলকোট", "কুমিল্লা আদর্শ সদর", "তিতাস"] },
+                        { name: "কক্সবাজার", upazilas: ["চকরিয়া", "কক্সবাজার সদর", "কুতুবদিয়া", "মহেশখালী", "রামু", "টেকনাফ", "উখিয়া", "পেকুয়া"] },
+                        { name: "ফেনী", upazilas: ["ছাগলনাইয়া", "দাগনভূঞা", "ফেনী সদর", "পরশুরাম", "সোনাগাজী", "ফুলগাজী"] },
+                        { name: "খাগড়াছড়ি", upazilas: ["দিঘীনালা", "খাগড়াছড়ি সদর", "লক্ষ্মীছড়ি", "মহালছড়ি", "মানিকছড়ি", "মাটিরাঙ্গা", "পানছড়ি", "রামগড়"] },
+                        { name: "লক্ষ্মীপুর", upazilas: ["লক্ষ্মীপুর সদর", "রায়পুর", "রামগঞ্জ", "রামগতি", "কমলনগর"] },
+                        { name: "নোয়াখালী", upazilas: ["বেগমগঞ্জ", "চাটখিল", "কোম্পানীগঞ্জ", "হাতিয়া", "সেনবাগ", "নোয়াখালী সদর", "সোনাইমুড়ি", "সুবর্ণচর", "কবিরহাট"] },
+                        { name: "রাঙ্গামাটি", upazilas: ["বাঘাইছড়ি", "বরকল", "কাউখালী", "বিলাইছড়ি", "কাপ্তাই", "জুরাছড়ি", "লংগদু", "নানিয়ারচর", "রাজস্থলী", "রাঙ্গামাটি সদর"] }
+                    ]
+                },
+                {
+                    name: "সিলেট",
+                    districts: [
+                        { name: "হবিগঞ্জ", upazilas: ["আজমিরীগঞ্জ", "বাহুবল", "বানিয়াচং", "চুনারুঘাট", "হবিগঞ্জ সদর", "লাখাই", "মাধবপুর", "নবীগঞ্জ", "শায়েস্তাগঞ্জ"] },
+                        { name: "মৌলভীবাজার", upazilas: ["বড়লেখা", "জুড়ী", "কমলগঞ্জ", "কুলাউড়া", "মৌলভীবাজার সদর", "রাজনগর", "শ্রীমঙ্গল"] },
+                        { name: "সুনামগঞ্জ", upazilas: ["বিশ্বম্ভরপুর", "ছাতক", "দিরাই", "ধর্মপাশা", "দোয়ারাবাজার", "জগন্নাথপুর", "জামালগঞ্জ", "সুল্লা", "সুনামগঞ্জ সদর", "তাহিরপুর"] },
+                        { name: "সিলেট", upazilas: ["বালাগঞ্জ", "বিয়ানীবাজার", "বিশ্বনাথ", "কোম্পানীগঞ্জ", "ফেঞ্চুগঞ্জ", "গোলাপগঞ্জ", "গোয়াইনঘাট", "জৈন্তাপুর", "কানাইঘাট", "সিলেট সদর", "জাকিগঞ্জ", "দক্ষিণ সুরমা", "ওসমানী নগর"] }
+                    ]
+                },
+                {
+                    name: "রাজশাহী",
+                    districts: [
+                        { name: "বগুড়া", upazilas: ["আদমদীঘি", "বগুড়া সদর", "শেরপুর", "ধুনট", "ধুপচাঁচিয়া", "গাবতলী", "কাহালু", "নন্দীগ্রাম", "সাহজাদপুর", "সারিয়াকান্দি", "শিবগঞ্জ", "সোনাতলা"] },
+                        { name: "চাঁপাইনবাবগঞ্জ", upazilas: ["ভোলাহাট", "গোমস্তাপুর", "নাচোল", "চাঁপাইনবাবগঞ্জ সদর", "শিবগঞ্জ"] },
+                        { name: "জয়পুরহাট", upazilas: ["আক্কেলপুর", "জয়পুরহাট সদর", "কালাই", "ক্ষেতলাল", "পাঁচবিবি"] },
+                        { name: "নওগাঁ", upazilas: ["আত্রাই", "বাদলগাছি", "ধামইরহাট", "মান্দা", "মহাদেবপুর", "নওগাঁ সদর", "নিয়ামতপুর", "পত্নীতলা", "পোরশা", "রাণীনগর", "সাপাহার"] },
+                        { name: "নাটোর", upazilas: ["বাগাতিপাড়া", "বড়াইগ্রাম", "গুরুদাসপুর", "লালপুর", "নাটোর সদর", "সিংড়া"] },
+                        { name: "পাবনা", upazilas: ["আটঘরিয়া", "বেড়া", "ভাঙ্গুড়া", "চাটমোহর", "ফরিদপুর", "ঈশ্বরদী", "পাবনা সদর", "সাঁথিয়া", "সুজানগর"] },
+                        { name: "রাজশাহী", upazilas: ["বাগমারা", "বাগমারা", "চারঘাট", "দুর্গাপুর", "গোদাগাড়ী", "মোহনপুর", "পবা", "পুঠিয়া", "তানোর"] },
+                        { name: "সিরাজগঞ্জ", upazilas: ["বেলকুচি", "চৌহালি", "কামারখন্দ", "কাজীপুর", "রায়গঞ্জ", "শাহজাদপুর", "সিরাজগঞ্জ সদর", "তারাশ", "উল্লাপাড়া"] }
+                    ]
+                },
+                {
+                    name: "রংপুর",
+                    districts: [
+                        { name: "দিনাজপুর", upazilas: ["বিরামপুর", "বীরগঞ্জ", "বিরল", "বোচাগঞ্জ", "চিরিরবন্দর", "ফুলবাড়ী", "ঘোড়াঘাট", "হাকিমপুর", "কাহারোল", "খানসামা", "দিনাজপুর সদর", "নবাবগঞ্জ", "পার্বতীপুর"] },
+                        { name: "গাইবান্ধা", upazilas: ["ফুলছড়ি", "গাইবান্ধা সদর", "গোবিন্দগঞ্জ", "পলাশবাড়ী", "সাদুল্লাপুর", "সাঘাটা", "সুন্দরগঞ্জ"] },
+                        { name: "কুড়িগ্রাম", upazilas: ["ভুরুঙ্গামারী", "চর রাজিবপুর", "চিলমারী", "ফুলবাড়ী", "কুড়িগ্রাম সদর", "নাগেশ্বরী", "রাজারহাট", "রৌমারী", "উলিপুর"] },
+                        { name: "লালমনিরহাট", upazilas: ["আদিতমারী", "হাতিবান্ধা", "কালীগঞ্জ", "লালমনিরহাট সদর", "পাটগ্রাম"] },
+                        { name: "নীলফামারী", upazilas: ["ডিমলা", "ডোমার", "জলঢাকা", "কিশোরগঞ্জ", "নীলফামারী সদর", "সৈয়দপুর"] },
+                        { name: "পঞ্চগড়", upazilas: ["আটোয়ারী", "বোদা", "দেবীগঞ্জ", "পঞ্চগড় সদর", "তেতুলিয়া"] },
+                        { name: "রংপুর", upazilas: ["বদরগঞ্জ", "গঙ্গাচড়া", "কাউনিয়া", "রংপুর সদর", "মিঠাপুকুর", "পীরগঞ্জ", "পীরগাছা", "তারাগঞ্জ"] },
+                        { name: "ঠাকুরগাঁও", upazilas: ["বালিয়াডাঙ্গী", "হরিপুর", "পীরগঞ্জ", "রাণীশংকৈল", "ঠাকুরগাঁও সদর"] }
+                    ]
+                },
+                {
+                    name: "খুলনা",
+                    districts: [
+                        { name: "বাগেরহাট", upazilas: ["বাগেরহাট সদর", "চিতলমারী", "ফকিরহাট", "কচুয়া", "মোল্লাহাট", "মোংলা", "মোরেলগঞ্জ", "রামপাল", "শরণখোলা"] },
+                        { name: "চুয়াডাঙ্গা", upazilas: ["আলমডাঙ্গা", "চুয়াডাঙ্গা সদর", "দামুড়হুদা", "জীবননগর"] },
+                        { name: "যশোর", upazilas: ["অভয়নগর", "বাঘারপাড়া", "চৌগাছা", "ঝিকরগাছা", "কেশবপুর", "যশোর সদর", "মনিরামপুর", "শার্শা"] },
+                        { name: "ঝিনাইদহ", upazilas: ["হরিণাকুণ্ড", "ঝিনাইদহ সদর", "কালীগঞ্জ", "কোটচাঁদপুর", "মহেশপুর", "শৈলকুপা"] },
+                        { name: "খুলনা", upazilas: ["বটিয়াঘাটা", "দাকোপ", "ডুমুরিয়া", "দিঘলিয়া", "কয়রা", "পাইকগাছা", "ফুলতলা", "রূপসা", "তেরখাদা"] },
+                        { name: "কুষ্টিয়া", upazilas: ["ভেড়ামারা", "দৌলতপুর", "খোকসা", "কুমারখালী", "কুষ্টিয়া সদর", "মিরপুর"] },
+                        { name: "মাগুরা", upazilas: ["মাগুরা সদর", "মোহাম্মদপুর", "শালিখা", "শ্রীপুর"] },
+                        { name: "মেহেরপুর", upazilas: ["গাংনি", "মেহেরপুর সদর", "মুজিবনগর"] },
+                        { name: "নড়াইল", upazilas: ["কালিয়া", "লোহাগড়া", "নড়াইল সদর"] },
+                        { name: "সাতক্ষীরা", upazilas: ["আসসুনি", "দেবহাটা", "কলারোয়া", "কালীগঞ্জ", "সাতক্ষীরা সদর", "শ্যামনগর", "তালা"] }
+                    ]
+                },
+                {
+                    name: "বরিশাল",
+                    districts: [
+                        { name: "বরিশাল", upazilas: ["আগৈলঝাড়া", "বাবুগঞ্জ", "বাকেরগঞ্জ", "বানারীপাড়া", "গৌরনদী", "হিজলা", "বরিশাল সদর", "মেহেন্দিগঞ্জ", "মুলাদী", "ওজিরপুর"] },
+                        { name: "ভোলা", upazilas: ["ভোলা সদর", "বুরহানউদ্দিন", "চর ফ্যাশন", "দৌলতখান", "লালমোহন", "তজুমদ্দিন", "মনপুরা"] },
+                        { name: "ঝালকাঠি", upazilas: ["ঝালকাঠি সদর", "কাঠালিয়া", "নলছিটি", "রাজাপুর"] },
+                        { name: "পটুয়াখালী", upazilas: ["বাউফল", "দশমিনা", "গলাচিপা", "কলাপাড়া", "মির্জাগঞ্জ", "পটুয়াখালী সদর", "রাঙ্গাবালী", "দুমকি"] },
+                        { name: "পিরোজপুর", upazilas: ["ভান্ডারিয়া", "কাউখালী", "মঠবাড়িয়া", "নাজিরপুর", "পিরোজপুর সদর", "নেছারাবাদ", "জিয়ানগর"] },
+                        { name: "বরগুনা", upazilas: ["আমতলী", "বামনা", "বরগুনা সদর", "বেতাগী", "পাথরঘাটা", "তালতলী"] }
+                    ]
+                },
+                {
+                    name: "ময়মনসিংহ",
+                    districts: [
+                        { name: "জামালপুর", upazilas: ["বকশীগঞ্জ", "দেওয়ানগঞ্জ", "ইসলামপুর", "জামালপুর সদর", "মাদারগঞ্জ", "মেলান্দহ", "সরিষাবাড়ী"] },
+                        { name: "ময়মনসিংহ", upazilas: ["ভালুকা", "ধোবাউড়া", "ফুলবাড়ীয়া", "গফরগাঁও", "গৌরীপুর", "হালুয়াঘাট", "ঈশ্বরগঞ্জ", "ময়মনসিংহ সদর", "মুক্তাগাছা", "নান্দাইল", "ফুলপুর", "ত্রিশাল"] },
+                        { name: "নেত্রকোণা", upazilas: ["আটপাড়া", "বারহাট্টা", "দুর্গাপুর", "খালিয়াজুরী", "কেন্দুয়া", "মদন", "মোহনগঞ্জ", "নেত্রকোণা সদর", "পূর্বধলা"] },
+                        { name: "শেরপুর", upazilas: ["ঝিনাইগাতী", "নকলা", "নালিতাবাড়ী", "শেরপুর সদর", "শ্রীবরদী"] }
+                    ]
+                }
+            ]
+        };
+
+        // Format phone number function
+        function formatPhoneNumber(phone) {
+            let cleaned = phone.replace(/\D/g, '');
+
+            if (cleaned.startsWith('88')) {
+                cleaned = cleaned.substring(2);
+            } else if (cleaned.startsWith('+88')) {
+                cleaned = cleaned.substring(3);
+            }
+
+            if (cleaned.length === 10 && cleaned.startsWith('1')) {
+                cleaned = '0' + cleaned;
+            }
+
+            return cleaned;
+        }
+
+        // Helper function to show alerts
+        function showAlert(message, type) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert alert-${type} alert-dismissible fade show alert-fixed`;
+            alertDiv.role = 'alert';
+            alertDiv.innerHTML = `
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+
+            document.body.appendChild(alertDiv);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 5000);
+        }
+
+        // Update the displayRecentBloodRequests function
+        async function displayRecentBloodRequests() {
+            const loading = document.getElementById('requestsLoading');
+            const requestsList = document.getElementById('requestsList');
+
+            try {
+                loading.style.display = 'block';
+                requestsList.innerHTML = '';
+
+                const q = query(
+                    collection(db, "requests"),
+                    where("status", "in", ["pending", "processing"]),
+                    orderBy("createdAt", "desc"),
+                    limit(6)
+                );
+
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    requestsList.innerHTML = `
+                <div class="col-12 text-center py-4">
+                    <div class="alert alert-info">কোনো সাম্প্রতিক রক্তের অনুরোধ পাওয়া যায়নি</div>
+                </div>
+            `;
+                    return;
+                }
+
+                querySnapshot.forEach((doc) => {
+                    try {
+                        const request = doc.data();
+                        if (!request) throw new Error("Invalid request data");
+
+                        request.id = doc.id;
+                        requestsList.appendChild(createRequestCard(request));
+                    } catch (error) {
+                        console.error("Error processing request document:", error);
+                    }
+                });
+
+            } catch (error) {
+                console.error("Error loading blood requests: ", error);
+
+                // More detailed error message
+                let errorMessage = "ত্রুটি ঘটেছে, পরে আবার চেষ্টা করুন";
+                if (error.code === "permission-denied") {
+                    errorMessage = "ডাটা অ্যাক্সেসের অনুমতি নেই। অ্যাডমিনের সাথে যোগাযোগ করুন।";
+                } else if (error.code === "unavailable") {
+                    errorMessage = "নেটওয়ার্ক সমস্যা হচ্ছে। ইন্টারনেট সংযোগ পরীক্ষা করুন।";
+                }
+
+                requestsList.innerHTML = `
+            <div class="col-12 text-center py-4">
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    ${errorMessage}
+                    <div class="mt-2 small">ত্রুটির বিস্তারিত: ${error.message || 'Unknown error'}</div>
+                </div>
+            </div>
+        `;
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        // Function to create request cards
+        function createRequestCard(request) {
+            const col = document.createElement('div');
+            col.className = 'col';
+
+            const card = document.createElement('div');
+            card.className = 'card request-card h-100 border-start border-4 border-danger';
+
+            // Format dates and times
+            const neededDate = request.neededDate ?
+                new Date(request.neededDate).toLocaleDateString('bn-BD', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                }) : 'জরুরি';
+
+            const neededTime = request.neededTime || 'যত তাড়াতাড়ি সম্ভব';
+
+            const createdAt = request.createdAt?.toDate?.() ?
+                request.createdAt.toDate().toLocaleString('bn-BD', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }) : 'N/A';
+
+            card.innerHTML = `
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge bg-danger rounded-pill">রক্তের গ্রুপ: ${request.bloodGroup}</span>
+                <span class="badge bg-secondary rounded-pill">রক্তের পরিমাণ: ${request.bloodAmount} ব্যাগ</span>
+            </div>
+            <div class="mb-3">
+                <p class="card-text mb-1"><i class="fas fa-hospital me-2 text-muted"></i> <strong>${request.location || 'N/A'}</strong></p>
+                <p class="card-text mb-1"><i class="fas fa-map-marker-alt me-2 text-muted"></i> জেলা: ${request.district || 'N/A'}, উপজেলা: ${request.upazila || 'N/A'}</p>
+                <p class="card-text mb-1"><i class="fas fa-calendar-day me-2 text-muted"></i> তারিখ: <strong>${neededDate}</strong></p>
+                <p class="card-text mb-1"><i class="fas fa-clock me-2 text-muted"></i> সময়: <strong>${neededTime}</strong></p>
+                <p class="card-text mb-1"><i class="fas fa-user-clock me-2 text-muted"></i> অনুরোধের সময়: ${createdAt}</p>
+                <p class="card-text mb-1"><i class="fas fa-phone me-2 text-muted"></i> ${request.phone || 'N/A'}</p>
+            </div>
+            <div class="mt-auto">
+                <span class="badge bg-${request.status === 'pending' ? 'warning' : 'info'} text-dark">
+                    ${request.status === 'pending' ? 'অপেক্ষমান' : 'প্রক্রিয়াধীন'}
+                </span>
+            </div>
+        </div>
+        <div class="card-footer bg-white d-flex gap-2 border-top-0">
+            <a href="tel:${request.phone || ''}" class="btn btn-danger flex-grow-1 contact-btn">
+                <i class="fas fa-phone me-2"></i> কল করুন
+            </a>
+            <a href="https://wa.me/88${request.phone || ''}" class="btn btn-success whatsapp-btn">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    `;
+
+            col.appendChild(card);
+            return col;
+        }
+
+        // Function to display recent successful donations
+        async function displayRecentSuccessfulDonations() {
+            const loading = document.getElementById('successStoriesLoading');
+            const successStoriesList = document.getElementById('successStoriesList');
+
+            try {
+                loading.style.display = 'block';
+                successStoriesList.innerHTML = '';
+
+                const q = query(
+                    collection(db, "successfulDonations"),
+                    orderBy("donationDate", "desc"),
+                    limit(3)
+                );
+
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    successStoriesList.innerHTML = `
+                    <div class="col-12 text-center py-4">
+                        <div class="alert alert-info">কোনো সফল রক্তদানের তথ্য পাওয়া যায়নি</div>
+                    </div>
+                `;
+                    return;
+                }
+
+                querySnapshot.forEach((doc) => {
+                    const donation = doc.data();
+                    donation.id = doc.id;
+                    successStoriesList.appendChild(createSuccessStoryCard(donation));
+                });
+
+            } catch (error) {
+                console.error("Error loading success stories: ", error);
+                successStoriesList.innerHTML = `
+                <div class="col-12 text-center py-4">
+                    <div class="alert alert-danger">ত্রুটি ঘটেছে, পরে আবার চেষ্টা করুন</div>
+                </div>
+            `;
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        // Function to create success story cards
+        function createSuccessStoryCard(donation) {
+            const col = document.createElement('div');
+            col.className = 'col';
+
+            const card = document.createElement('div');
+            card.className = 'card success-card h-100 border-0 shadow-sm';
+
+            // Format dates
+            const donationDate = donation.donationDate?.toDate?.() || new Date();
+            const formattedDate = donationDate.toLocaleDateString('bn-BD');
+
+            // Safely access nested properties
+            const requestDetails = donation.requestDetails || {};
+            const donorDetails = donation.donorDetails || {};
+
+            card.innerHTML = `
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="success-badge">
+                        <i class="fas fa-heart me-2"></i> সফল রক্তদান
+                    </div>
+                    <span class="badge bg-danger rounded-pill">${requestDetails.bloodGroup || 'N/A'}</span>
+                </div>
+                
+                <div class="mb-3">                    
+                    <p class="card-text mb-2">
+                        <i class="fas fa-hospital me-2 text-danger"></i> 
+                        <strong>হাসপাতাল:</strong> ${requestDetails.hospital || 'N/A'}
+                    </p>
+                    <p class="card-text mb-2">
+                        <i class="fas fa-map-marker-alt me-2 text-danger"></i> 
+                        <strong>স্থান:</strong> ${requestDetails.division || 'N/A'}, ${requestDetails.district || 'N/A'}, ${requestDetails.upazila || 'N/A'}
+                    </p>
+                    <p class="card-text mb-2">
+                        <i class="fas fa-calendar-alt me-2 text-danger"></i> 
+                        <strong>তারিখ:</strong> ${formattedDate}
+                    </p>
+                </div>
+                
+                <div class="donor-info mt-3 p-3 bg-light rounded">
+                    <h6 class="text-success"><i class="fas fa-user-check me-2"></i> রক্তদাতার তথ্য:</h6>
+                    <p class="mb-1"><strong>নাম:</strong> ${donorDetails.name || 'N/A'}</p>
+                    <p class="mb-1"><strong>মোবাইল:</strong> ${donorDetails.phone || 'N/A'}</p>
+                    <p class="mb-1"><strong>স্থান:</strong> ${donorDetails.division || 'N/A'}, ${donorDetails.district || 'N/A'}, ${donorDetails.upazila || 'N/A'}</p>
+                    <p class="mb-1"><strong>ব্লাড গ্রুপ:</strong> ${donorDetails.bloodGroup || 'N/A'}</p>
+                </div>
+                
+                <div class="testimonial mt-3" style="display: ${donation.testimonial ? 'block' : 'none'}">
+                    <i class="fas fa-quote-left"></i>
+                    <p class="mb-0">${donation.testimonial || ''}</p>
+                </div>
+            </div>
+        `;
+
+            col.appendChild(card);
+            return col;
+        }
+
+        function formatDate(timestamp) {
+            if (!timestamp) return 'N/A';
+            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+            return date.toLocaleDateString('bn-BD');
+        }
+
+        async function updateStats() {
+            try {
+                console.log("Updating stats...");
+
+                // Get total registered donors count
+                const donorsQuery = query(collection(db, "donors"));
+                const donorsSnapshot = await getDocs(donorsQuery);
+                document.getElementById('donors-count').textContent = donorsSnapshot.size + '+';
+                console.log("Total donors:", donorsSnapshot.size);
+
+                // Get total blood requests count
+                const requestsQuery = query(collection(db, "requests"));
+                const requestsSnapshot = await getDocs(requestsQuery);
+                document.getElementById('requests-count').textContent = requestsSnapshot.size + '+';
+                console.log("Total requests:", requestsSnapshot.size);
+
+                // Get successful donations count (completed requests)
+                const donationsQuery = query(collection(db, "requests"), where("status", "==", "completed"));
+                const donationsSnapshot = await getDocs(donationsQuery);
+                document.getElementById('lives-saved').textContent = donationsSnapshot.size + '+';
+                console.log("Successful donations:", donationsSnapshot.size);
+
+                // Get unique districts covered by donors
+                const districtsQuery = query(collection(db, "donors"));
+                const districtsSnapshot = await getDocs(districtsQuery);
+
+                const uniqueDistricts = new Set();
+                districtsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.district) {
+                        uniqueDistricts.add(data.district);
+                    }
+                });
+
+                document.getElementById('districts-covered').textContent = uniqueDistricts.size;
+                console.log("Districts covered:", uniqueDistricts.size);
+
+            } catch (error) {
+                console.error("Error updating stats: ", error);
+                // Fallback to default values if there's an error
+                document.getElementById('donors-count').textContent = '3580+';
+                document.getElementById('requests-count').textContent = '1425+';
+                document.getElementById('lives-saved').textContent = '1128+';
+                document.getElementById('districts-covered').textContent = '64';
+            }
+        }
+
+        // Load recent donors and initialize the page
+        document.addEventListener('DOMContentLoaded', async function () {
+            try {
+                // Update stats immediately
+                await updateStats();
+                // Load recent requests
+                await displayRecentBloodRequests();
+                // Load success stories
+                await displayRecentSuccessfulDonations();
+            } catch (error) {
+                console.error("Error initializing page: ", error);
+            }
+
+            // Handle donation date update with additional fields
+            document.getElementById('updateDonationForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                if (this.checkValidity()) {
+                    try {
+                        const phone = document.getElementById('donorPhoneUpdate').value;
+                        const newPhone = document.getElementById('updatePhone').value;
+                        const lastDonation = document.getElementById('lastDonationUpdate').value;
+                        const division = document.getElementById('updateDivision').value;
+                        const district = document.getElementById('updateDistrict').value;
+                        const upazila = document.getElementById('updateUpazila').value;
+
+                        // Format phone numbers consistently
+                        const formattedPhone = formatPhoneNumber(phone);
+                        const formattedNewPhone = newPhone ? formatPhoneNumber(newPhone) : null;
+
+                        // Find donor by phone
+                        const q = query(collection(db, "donors"), where("phone", "==", formattedPhone));
+                        const querySnapshot = await getDocs(q);
+
+                        if (querySnapshot.empty) {
+                            showAlert("এই মোবাইল নম্বরের সাথে কোনো রক্তদাতা পাওয়া যায়নি", "danger");
+                            return;
+                        }
+
+                        // Update all matching donors
+                        const batch = writeBatch(db);
+                        querySnapshot.forEach((doc) => {
+                            const docRef = doc.ref;
+                            const updateData = {
+                                lastDonation: new Date(lastDonation),
+                                updatedAt: new Date()
+                            };
+
+                            // Add optional fields if they have values
+                            if (formattedNewPhone) updateData.phone = formattedNewPhone;
+                            if (division) updateData.division = division;
+                            if (district) updateData.district = district;
+                            if (upazila) updateData.upazila = upazila;
+
+                            // Increment total donations count if this is a new donation
+                            const donorData = doc.data();
+                            const lastDonationDate = donorData.lastDonation?.toDate?.() || null;
+                            const newDonationDate = new Date(lastDonation);
+
+                            if (!lastDonationDate || newDonationDate > lastDonationDate) {
+                                updateData.totalDonations = (donorData.totalDonations || 0) + 1;
+                            }
+
+                            batch.update(docRef, updateData);
+                        });
+
+                        await batch.commit();
+
+                        showAlert("রক্তদাতার তথ্য সফলভাবে আপডেট করা হয়েছে! এবং আপনার মোট রক্তদানের সংখ্যা ও আপডেট করা হয়েছে।", "success");
+                        this.reset();
+                        this.classList.remove('was-validated');
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('updateDonationModal'));
+                        modal.hide();
+
+                    } catch (error) {
+                        console.error("Error updating donor information: ", error);
+                        showAlert("ত্রুটি ঘটেছে, পরে আবার চেষ্টা করুন", "danger");
+                    }
+                } else {
+                    this.classList.add('was-validated');
+                }
+            });
+
+            // Handle successful donation form submission - update total donations count
+            document.getElementById('voteDonationForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                if (this.checkValidity()) {
+                    try {
+                        const requestPhone = formatPhoneNumber(document.getElementById('requestPhone').value);
+                        const donorPhone = formatPhoneNumber(document.getElementById('donorPhone').value);
+                        const donationDate = document.getElementById('donationDate').value;
+
+                        // Validate request phone exists in requests
+                        const requestQuery = query(collection(db, "requests"),
+                            where("phone", "==", requestPhone),
+                            where("status", "in", ["pending", "processing"]));
+                        const requestSnapshot = await getDocs(requestQuery);
+
+                        if (requestSnapshot.empty) {
+                            showAlert("এই মোবাইল নম্বরের সাথে কোনো সক্রিয় রক্তের অনুরোধ পাওয়া যায়নি", "warning");
+                            return;
+                        }
+
+                        // Get the most recent request if multiple exist
+                        let latestRequest = null;
+                        requestSnapshot.forEach(doc => {
+                            const request = doc.data();
+                            if (!latestRequest || request.createdAt > latestRequest.createdAt) {
+                                latestRequest = { id: doc.id, ...request };
+                            }
+                        });
+
+                        // Validate donor exists
+                        const donorQuery = query(collection(db, "donors"),
+                            where("phone", "==", donorPhone));
+                        const donorSnapshot = await getDocs(donorQuery);
+
+                        if (donorSnapshot.empty) {
+                            showAlert("এই মোবাইল নম্বরের সাথে কোনো নিবন্ধিত রক্তদাতা পাওয়া যায়নি", "warning");
+                            return;
+                        }
+
+                        // Prepare request details with fallback for undefined values
+                        const requestDetails = {
+                            bloodGroup: latestRequest.bloodGroup || 'N/A',
+                            district: latestRequest.district || 'N/A',
+                            division: latestRequest.division || 'N/A',
+                            upazila: latestRequest.upazila || 'N/A',
+                            hospital: latestRequest.location || 'N/A',
+                            patientName: latestRequest.patientName || 'N/A'
+                        };
+
+                        // Prepare donor details with fallback for undefined values
+                        const donorData = donorSnapshot.docs[0].data();
+                        const donorDetails = {
+                            name: donorData.name || 'N/A',
+                            phone: donorData.phone || 'N/A',
+                            bloodGroup: donorData.bloodGroup || 'N/A',
+                            district: donorData.district || 'N/A',
+                            upazila: donorData.upazila || 'N/A',
+                            division: donorData.division || 'N/A',
+                            totalDonations: donorData.totalDonations || 0
+                        };
+
+                        // Create successful donation record
+                        const successRef = collection(db, "successfulDonations");
+                        await addDoc(successRef, {
+                            requestId: latestRequest.id,
+                            requestPhone,
+                            donorPhone,
+                            donationDate: new Date(donationDate),
+                            reportedAt: new Date(),
+                            requestDetails: requestDetails,
+                            donorDetails: donorDetails
+                        });
+
+                        // Update donor's information including incrementing total donations
+                        const batch = writeBatch(db);
+                        donorSnapshot.forEach((doc) => {
+                            const docRef = doc.ref;
+                            batch.update(docRef, {
+                                lastDonation: new Date(donationDate),
+                                updatedAt: new Date(),
+                                totalDonations: (donorData.totalDonations || 0) + 1
+                            });
+                        });
+
+                        // Update request status to completed
+                        const requestRef = doc(db, "requests", latestRequest.id);
+                        batch.update(requestRef, {
+                            status: "completed",
+                            completedAt: new Date(),
+                            donorPhone: donorPhone
+                        });
+
+                        await batch.commit();
+
+                        showAlert("সফল রক্তদান রিপোর্ট সফলভাবে জমা দেওয়া হয়েছে! রক্তদাতার মোট রক্তদানের সংখ্যা আপডেট করা হয়েছে।", "success");
+
+                        // Reset form and close modal
+                        this.reset();
+                        this.classList.remove('was-validated');
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('voteDonationModal'));
+                        modal.hide();
+
+                        // Refresh stats and lists
+                        await updateStats();
+                        await displayRecentSuccessfulDonations();
+                        await displayRecentBloodRequests();
+
+                    } catch (error) {
+                        console.error("Error reporting successful donation:", error);
+                        showAlert("ত্রুটি ঘটেছে: " + error.message, "danger");
+                    }
+                } else {
+                    this.classList.add('was-validated');
+                }
+            });
+
+            // Populate division, district, upazila in update form
+            document.addEventListener('DOMContentLoaded', function () {
+                // When update modal is shown, populate the division dropdown
+                document.getElementById('updateDonationModal').addEventListener('show.bs.modal', function () {
+                    populateDivisions('updateDivision');
+                });
+
+                // Handle division change in update form
+                document.getElementById('updateDivision').addEventListener('change', function () {
+                    const divisionName = this.value;
+                    updateDistricts(divisionName, 'updateDistrict');
+                });
+
+                // Handle district change in update form
+                document.getElementById('updateDistrict').addEventListener('change', function () {
+                    const districtName = this.value;
+                    const divisionName = document.getElementById('updateDivision').value;
+                    updateUpazilas(divisionName, districtName, 'updateUpazila');
+                });
+            });
+        });
+
+        // Back to top button functionality
+        document.getElementById('backToTop').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
+
+        // Function to update time and date separately
+        function updateDateTime() {
+            const now = new Date();
+
+            // Time options
+            const timeOptions = {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+
+            // Date options
+            const dateOptions = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('bn-BD', timeOptions);
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('bn-BD', dateOptions);
+        }
+
+        // Update every second
+        setInterval(updateDateTime, 1000);
+
+        // Initial call
+        updateDateTime();
+
+        // Highlight current page in navigation
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navItems = {
+                'index.html': 'nav-home',
+                'donor-registration.html': 'nav-register',
+                'blood-request.html': 'nav-request',
+                'donor-search.html': 'nav-search',
+                'information.html': 'nav-info'
+            };
+
+            if (navItems[currentPage]) {
+                document.getElementById(navItems[currentPage]).checked = true;
+            }
+        });
+        // Function to populate divisions dropdown
+        function populateDivisions(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.innerHTML = '<option value="" selected disabled>বিভাগ নির্বাচন করুন</option>';
+
+            bangladeshData.divisions.forEach(division => {
+                const option = document.createElement('option');
+                option.value = division.name;
+                option.textContent = division.name;
+                dropdown.appendChild(option);
+            });
+        }
+
+        // Function to update districts based on selected division
+        function updateDistricts(divisionName, districtDropdownId) {
+            const districtDropdown = document.getElementById(districtDropdownId);
+            districtDropdown.innerHTML = '<option value="" selected disabled>জেলা নির্বাচন করুন</option>';
+
+            const division = bangladeshData.divisions.find(div => div.name === divisionName);
+            if (division) {
+                districtDropdown.disabled = false;
+                division.districts.forEach(district => {
+                    const option = document.createElement('option');
+                    option.value = district.name;
+                    option.textContent = district.name;
+                    districtDropdown.appendChild(option);
+                });
+            } else {
+                districtDropdown.disabled = true;
+            }
+
+            // Reset upazila dropdown
+            const upazilaDropdownId = districtDropdownId.replace('District', 'Upazila');
+            if (upazilaDropdownId !== districtDropdownId) {
+                const upazilaDropdown = document.getElementById(upazilaDropdownId);
+                if (upazilaDropdown) {
+                    upazilaDropdown.innerHTML = '<option value="" selected disabled>উপজেলা নির্বাচন করুন</option>';
+                    upazilaDropdown.disabled = true;
+                }
+            }
+        }
+
+        // Function to update upazilas based on selected district
+        function updateUpazilas(divisionName, districtName, upazilaDropdownId) {
+            const upazilaDropdown = document.getElementById(upazilaDropdownId);
+            upazilaDropdown.innerHTML = '<option value="" selected disabled>উপজেলা নির্বাচন করুন</option>';
+
+            const division = bangladeshData.divisions.find(div => div.name === divisionName);
+            if (division) {
+                const district = division.districts.find(dist => dist.name === districtName);
+                if (district) {
+                    upazilaDropdown.disabled = false;
+                    district.upazilas.forEach(upazila => {
+                        const option = document.createElement('option');
+                        option.value = upazila;
+                        option.textContent = upazila;
+                        upazilaDropdown.appendChild(option);
+                    });
+                } else {
+                    upazilaDropdown.disabled = true;
+                }
+            } else {
+                upazilaDropdown.disabled = true;
+            }
+        }
+
+        // Add event listeners for the update donation modal
+        document.getElementById('updateDonationModal').addEventListener('show.bs.modal', function () {
+            populateDivisions('updateDivision');
+        });
+
+        document.getElementById('updateDivision').addEventListener('change', function () {
+            const divisionName = this.value;
+            updateDistricts(divisionName, 'updateDistrict');
+        });
+
+        document.getElementById('updateDistrict').addEventListener('change', function () {
+            const districtName = this.value;
+            const divisionName = document.getElementById('updateDivision').value;
+            updateUpazilas(divisionName, districtName, 'updateUpazila');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

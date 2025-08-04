@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information - RJF Blood Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=SolaimanLipi&display=swap" rel="stylesheet">
+    <!-- Favicon Links -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <style>
+        /* Additional Animation Styles */
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .pulse-slow {
+            animation: pulse 3s infinite;
+        }
+        
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-grow:hover {
+            transform: scale(1.02);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(230, 57, 70, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(230, 57, 70, 0.25);
+        }
+        
+        .faq-item {
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            background-color: rgba(230, 57, 70, 0.05);
+            padding-left: 15px;
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header with Logo and Time -->
+    <header class="header">
+        <!-- Time and Date above the header content -->
+        <div class="container-fluid py-1 bg-light">
+            <div class="row">
+                <div class="col-6 text-start">
+                    <!-- Empty left side -->
+                </div>
+                <div class="col-6 text-end">
+                    <div id="currentDate" class="bangla-text date-display"></div>
+                    <div id="currentTime" class="bangla-text time-display"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-2">
+                    <img src="roktojoba-logo.png" alt="Roktojoba Foundation Logo" class="logo">
+                </div>
+                <div class="col-8 text-center">
+                    <h1>তথ্য বিভাগ</h1>
+                    <p class="tagline">Blood Donate. Connect. Save</p>
+                </div>
+                <div class="col-2 text-end">
+                    <!-- You can keep this empty or add something else -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4 card-hover">
+                    <div class="card-header">
+                        <i class="fas fa-info-circle"></i> আমাদের সম্পর্কে
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-primary"><i class="fas fa-bullseye me-2"></i>আমাদের মিশন</h6>
+                                <p class="bangla-text">রক্তজবা ফাউন্ডেশন একটি অরাজনৈতিক,মানবিক, সামাজিক ও স্বেচ্ছাসেবী
+                                    সংগঠন। আমাদের লক্ষ্য রক্তদাতা ও রক্তপ্রার্থীদের মধ্যে একটি সেতুবন্ধন তৈরি করা এবং
+                                    সময়মতো রক্তের যোগান নিশ্চিত করা।</p>
+                                <p class="bangla-text">আমরা ২০২৪ সাল থেকে কাজ করে আসছি এবং ইতিমধ্যে হাজারো মানুষের জীবন
+                                    বাঁচাতে সাহায্য করেছি।</p>
+
+                                <h6 class="text-primary mt-4"><i class="fas fa-eye me-2"></i>আমাদের ভিশন</h6>
+                                <p class="bangla-text">একটি রক্তদাতা-প্রার্থী নেটওয়ার্ক তৈরি করা যা সারা বাংলাদেশে
+                                    রক্তের
+                                    চাহিদা পূরণে সক্ষম হবে। আমরা চাই প্রতিটি জরুরি রক্তের চাহিদা যেন সময়মতো পূরণ হয়।
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-primary"><i class="fas fa-bullseye me-2"></i>আমাদের লক্ষ্য</h6>
+                                <ul class="bangla-text">
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>দেশজুড়ে নিবন্ধিত রক্তদাতাদের একটি বিশাল নেটওয়ার্ক গড়ে তোলা ।</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>বাংলাদেশের ৬৪টি জেলায় রক্তদানের সেবা সম্প্রসারণ করা ।</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>জরুরি ভিত্তিতে রক্তের অনুরোধ দ্রুত ও নির্ভুলভাবে গ্রহণ করা ।</li>
+                                    <li><i class="fas fa-check-circle text-success me-2"></i>নিরাপদ ও সফল রক্তদানের মাধ্যমে জীবন রক্ষায় ভূমিকা রাখা ।</li>
+                                </ul>
+
+                                <h6 class="text-primary mt-4"><i class="fas fa-users me-2"></i>আমাদের টিম</h6>
+                                <p class="bangla-text">আমাদের টিমে রয়েছেন ডাক্তার, ইঞ্জিনিয়ার, শিক্ষক এবং বিভিন্ন
+                                    পেশার
+                                    স্বেচ্ছাসেবকরা যারা মানবতার সেবায় নিবেদিত।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Information Screen -->
+                <div class="screen" id="information">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="card slide-up card-hover" style="animation-delay: 0.2s;">
+                                <div class="card-header">
+                                    <i class="fas fa-info-circle"></i> রক্তদান সম্পর্কে তথ্য
+                                </div>
+                                <div class="card-body">
+                                    <div class="accordion" id="infoAccordion">
+                                        <div class="accordion-item mb-3 border-0">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button bangla-text collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                                    <i class="fas fa-heartbeat me-2 text-danger"></i> রক্তদানের উপকারিতা
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne" class="accordion-collapse collapse"
+                                                data-bs-parent="#infoAccordion">
+                                                <div class="accordion-body bangla-text">
+                                                    <p>রক্তদানের মাধ্যমে আপনি একজন মানুষের জীবন বাঁচাতে পারেন। এছাড়াও
+                                                        রক্তদানের
+                                                        কিছু স্বাস্থ্য উপকারিতা রয়েছে:</p>
+                                                    <ul>
+                                                        <li><i class="fas fa-heart text-danger me-2"></i>রক্তদান হৃদরোগের ঝুঁকি কমায়</li>
+                                                        <li><i class="fas fa-tint text-danger me-2"></i>রক্তে আয়রনের ভারসাম্য বজায় রাখে</li>
+                                                        <li><i class="fas fa-bone text-danger me-2"></i>নতুন রক্তকণিকা উৎপাদনে সাহায্য করে</li>
+                                                        <li><i class="fas fa-smile text-danger me-2"></i>মানসিক প্রশান্তি দেয়</li>
+                                                        <li><i class="fas fa-stethoscope text-danger me-2"></i>নিয়মিত স্বাস্থ্য পরীক্ষার সুযোগ পাওয়া যায়</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item mb-3 border-0">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed bangla-text" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                                    <i class="fas fa-user-check me-2 text-primary"></i> কারা রক্ত দান
+                                                    করতে
+                                                    পারবেন?
+                                                </button>
+                                            </h2>
+                                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                                data-bs-parent="#infoAccordion">
+                                                <div class="accordion-body bangla-text">
+                                                    <p>রক্তদাতা হওয়ার জন্য কিছু মৌলিক শর্ত পূরণ করতে হবে:</p>
+                                                    <ul>
+                                                        <li><i class="fas fa-birthday-cake text-primary me-2"></i>বয়স ১৮ থেকে ৬০ বছর এর মধ্যে হতে হবে</li>
+                                                        <li><i class="fas fa-weight text-primary me-2"></i>শারীরিক ওজন কমপক্ষে ৪৫ কেজি হতে হবে</li>
+                                                        <li><i class="fas fa-running text-primary me-2"></i>সুস্থ ও সবল শরীরের অধিকারী হতে হবে</li>
+                                                        <li><i class="fas fa-vial text-primary me-2"></i>হিমোগ্লোবিনের মাত্রা পুরুষের জন্য ১২.৫ গ্রাম/ডেসিলিটার এবং
+                                                            নারীর জন্য ১২
+                                                            গ্রাম/ডেসিলিটার হতে হবে</li>
+                                                        <li><i class="fas fa-procedures text-primary me-2"></i>গত ৩ মাসে কোনো বড় অস্ত্রোপচার বা রক্তদান করা যাবে না</li>
+                                                        <li><i class="fas fa-virus-slash text-primary me-2"></i>কোনো সংক্রামক রোগ (যেমন: হেপাটাইটিস বি/সি, এইচআইভি, সিফিলিস
+                                                            ইত্যাদি)
+                                                            থাকা যাবে না</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item mb-3 border-0">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed bangla-text" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                                    <i class="fas fa-clipboard-check me-2 text-warning"></i> রক্তদানের
+                                                    প্রস্তুতি
+                                                </button>
+                                            </h2>
+                                            <div id="collapseThree" class="accordion-collapse collapse"
+                                                data-bs-parent="#infoAccordion">
+                                                <div class="accordion-body bangla-text">
+                                                    <p>রক্তদানের আগে কিছু প্রস্তুতি নেওয়া প্রয়োজন:</p>
+                                                    <ul>
+                                                        <li><i class="fas fa-bed text-warning me-2"></i>রক্তদানের আগের রাতে পর্যাপ্ত ঘুমানো</li>
+                                                        <li><i class="fas fa-utensils text-warning me-2"></i>রক্তদানের আগে ভালোভাবে খাওয়া-দাওয়া করা</li>
+                                                        <li><i class="fas fa-hamburger text-warning me-2"></i>অতিরিক্ত চর্বিযুক্ত খাবার এড়িয়ে চলা</li>
+                                                        <li><i class="fas fa-tint text-warning me-2"></i>রক্তদানের আগে প্রচুর পানি পান করা</li>
+                                                        <li><i class="fas fa-smoking-ban text-warning me-2"></i>রক্তদানের আগে অ্যালকোহল বা ধূমপান না করা</li>
+                                                        <li><i class="fas fa-pills text-warning me-2"></i>কোনো ওষুধ সেবন করলে তা জানানো</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item mb-3 border-0">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed bangla-text" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                                    <i class="fas fa-hand-holding-heart me-2 text-success"></i>
+                                                    রক্তদানের পর করণীয়
+                                                </button>
+                                            </h2>
+                                            <div id="collapseFour" class="accordion-collapse collapse"
+                                                data-bs-parent="#infoAccordion">
+                                                <div class="accordion-body bangla-text">
+                                                    <p>রক্তদানের পর কিছু সতর্কতা অবলম্বন করা প্রয়োজন:</p>
+                                                    <ul>
+                                                        <li><i class="fas fa-couch text-success me-2"></i>রক্তদানের পর কমপক্ষে ১০-১৫ মিনিট বিশ্রাম নিন</li>
+                                                        <li><i class="fas fa-glass-whiskey text-success me-2"></i>পরবর্তী ২৪ ঘণ্টা প্রচুর তরল পান করুন</li>
+                                                        <li><i class="fas fa-smoking-ban text-success me-2"></i>রক্তদানের পর ১ ঘণ্টার মধ্যে ধূমপান করবেন না</li>
+                                                        <li><i class="fas fa-dumbbell text-success me-2"></i>রক্তদানের পর ১২ ঘণ্টা ভারী কাজ বা ব্যায়াম এড়িয়ে চলুন</li>
+                                                        <li><i class="fas fa-band-aid text-success me-2"></i>রক্তদানের স্থানে চাপ দিয়ে ব্যান্ডেজ ৪-৫ ঘণ্টা রাখুন</li>
+                                                        <li><i class="fas fa-procedures text-success me-2"></i>মাথা ঘুরানো বা দুর্বল লাগলে শুয়ে পড়ুন এবং পা উপরে তুলুন
+                                                        </li>
+                                                        <li><i class="fas fa-calendar-times text-success me-2"></i>পরবর্তী ২ মাসের মধ্যে আবার রক্তদান করবেন না</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card slide-up card-hover" style="animation-delay: 0.3s;">
+                                <div class="card-header">
+                                    <i class="fas fa-question-circle"></i> প্রায়শই জিজ্ঞাসিত প্রশ্ন
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="list-group list-group-flush">
+                                        <a href="#" class="list-group-item list-group-item-action bangla-text faq-item"
+                                            data-bs-toggle="modal" data-bs-target="#faqModal1">
+                                            <i class="fas fa-question-circle text-primary me-2"></i>রক্তদানে কি কোনো
+                                            স্বাস্থ্য ঝুঁকি আছে?
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action bangla-text faq-item"
+                                            data-bs-toggle="modal" data-bs-target="#faqModal2">
+                                            <i class="fas fa-question-circle text-primary me-2"></i>কত দিন পর পর রক্তদান
+                                            করা যায়?
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action bangla-text faq-item"
+                                            data-bs-toggle="modal" data-bs-target="#faqModal3">
+                                            <i class="fas fa-question-circle text-primary me-2"></i>রক্তদানের পর কেমন
+                                            অনুভূতি হতে পারে?
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action bangla-text faq-item"
+                                            data-bs-toggle="modal" data-bs-target="#faqModal4">
+                                            <i class="fas fa-question-circle text-primary me-2"></i>রক্তদানের জন্য
+                                            কোথায় যেতে হবে?
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action bangla-text faq-item"
+                                            data-bs-toggle="modal" data-bs-target="#faqModal5">
+                                            <i class="fas fa-question-circle text-primary me-2"></i>রক্তদানের পূর্বে কি
+                                            কি পরীক্ষা করা হয়?
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card slide-up card-hover mt-4" style="animation-delay: 0.4s;">
+                                <div class="card-header">
+                                    <i class="fas fa-phone-alt"></i> যোগাযোগ করুন
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-3"><i class="fas fa-phone me-2 text-primary"></i> ফোন: ০১৬০৬৯৬৪৫৫০, ০১৯৬০৫০৬৬০১</p>
+                                    <p class="mb-3"><i class="fas fa-envelope me-2 text-primary"></i> ইমেইল: roktojobafoundation@gmail.com</p>
+                                    <p class="mb-3"><i class="fas fa-map-marker-alt me-2 text-primary"></i> ঠিকানা: মতলব, চাঁদপুর, চট্টগ্রাম, বাংলাদেশ
+                                    </p>
+                                    <div class="d-flex mt-3 justify-content-center">
+                                        <a href="https://www.facebook.com/groups/795181972688739/?ref=share&mibextid=NSMWBT"
+                                            class="btn btn-primary me-2 social-icon" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://x.com/roktojoba8?t=GuWQ8An2FrBkG4DosGTMIA&s=09"
+                                            class="btn btn-info me-2 social-icon" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;"><i class="fab fa-twitter"></i></a>
+                                        <a href="https://t.me/roktojoba24" class="btn btn-primary me-2 social-icon" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;"><i
+                                                class="fab fa-telegram"></i></a>
+                                        <a href="https://wa.me/8801960506601" class="btn whatsapp-btn social-icon" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;"><i
+                                                class="fab fa-whatsapp"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Modals -->
+                <div class="modal fade" id="faqModal1" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title bangla-text"><i class="fas fa-heartbeat me-2"></i>রক্তদানে কি
+                                    কোনো স্বাস্থ্য ঝুঁকি আছে?</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bangla-text">
+                                <p>রক্তদান একটি সম্পূর্ণ নিরাপদ প্রক্রিয়া। একজন সুস্থ মানুষ নিয়মিত রক্তদান করতে পারেন
+                                    কোনো
+                                    স্বাস্থ্য ঝুঁকি ছাড়াই। রক্তদানের আগে একজন চিকিৎসক আপনার স্বাস্থ্য পরীক্ষা করবেন এবং
+                                    রক্তদানের
+                                    উপযোগী কিনা তা নিশ্চিত করবেন।</p>
+                                <p>রক্তদানের পর কিছু মানুষ সাময়িকভাবে হালকা মাথা ঘোরা বা দুর্বলতা অনুভব করতে পারেন, যা
+                                    সাধারণত
+                                    কিছুক্ষণ বিশ্রাম নিলে ঠিক হয়ে যায়।</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="faqModal2" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title bangla-text"><i class="fas fa-calendar-alt me-2"></i>কত দিন পর পর
+                                    রক্তদান করা যায়?</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bangla-text">
+                                <p>পুরুষরা প্রতি ৩ মাস (৯০ দিন) পর পর রক্তদান করতে পারেন। নারীরা প্রতি ৪ মাস (১২০ দিন)
+                                    পর পর রক্তদান
+                                    করতে পারেন। এই সময়ের মধ্যে শরীর স্বাভাবিকভাবে রক্তের পরিমাণ পুনরায় তৈরি করে ফেলে।
+                                </p>
+                                <p>রক্তদানের পরবর্তী সময়ের আগে আবার রক্তদান করা স্বাস্থ্যের জন্য ক্ষতিকর হতে পারে, তাই
+                                    নিয়ম মেনে
+                                    রক্তদান করা উচিত।</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="faqModal3" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title bangla-text"><i class="fas fa-heart me-2"></i>রক্তদানের পর কেমন
+                                    অনুভূতি হতে পারে?</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bangla-text">
+                                <p>রক্তদানের পর বেশিরভাগ মানুষ সম্পূর্ণ স্বাভাবিক অনুভব করেন। কিছু মানুষ সাময়িকভাবে
+                                    নিম্নলিখিত
+                                    অনুভূতি অনুভব করতে পারেন:</p>
+                                <ul>
+                                    <li>হালকা মাথা ঘোরা</li>
+                                    <li>সামান্য দুর্বলতা</li>
+                                    <li>রক্তদানের স্থানে সামান্য ব্যথা বা অস্বস্তি</li>
+                                </ul>
+                                <p>এই লক্ষণগুলো সাধারণত অল্প সময়ের মধ্যে চলে যায়। রক্তদানের পর কিছুক্ষণ বিশ্রাম নিলে
+                                    এবং প্রচুর
+                                    তরল পান করলে এই অনুভূতিগুলো দ্রুত কেটে যায়।</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="faqModal4" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title bangla-text"><i class="fas fa-map-marker-alt me-2"></i>রক্তদানের
+                                    জন্য কোথায় যেতে হবে?</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bangla-text">
+                                <p>আপনি নিম্নলিখিত স্থানে গিয়ে রক্তদান করতে পারেন:</p>
+                                <ul>
+                                    <li>সরকারি হাসপাতালের রক্ত পরিসঞ্চালন কেন্দ্র</li>
+                                    <li>বেসরকারি ব্লাড ব্যাংক</li>
+                                    <li>রক্তদান সংগঠনের কার্যালয়</li>
+                                </ul>
+                                <p>আমাদের RJF Blood Connect অ্যাপের মাধ্যমে আপনি আপনার নিকটবর্তী রক্তদান কেন্দ্রের তথ্য
+                                    পেতে পারেন।
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="faqModal5" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-primary text-white">
+                                <h5 class="modal-title bangla-text"><i class="fas fa-flask me-2"></i>রক্তদানের পূর্বে কি
+                                    কি পরীক্ষা করা হয়?</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body bangla-text">
+                                <p>রক্তদানের আগে নিম্নলিখিত পরীক্ষাগুলো করা হয়:</p>
+                                <ul>
+                                    <li>প্রাথমিক স্বাস্থ্য পরীক্ষা (রক্তচাপ, নাড়ির গতি, তাপমাত্রা)</li>
+                                    <li>হিমোগ্লোবিন পরীক্ষা (রক্তশূন্যতা আছে কিনা তা দেখার জন্য)</li>
+                                    <li>ওজন পরিমাপ</li>
+                                    <li>স্বাস্থ্য সংক্রান্ত প্রশ্নাবলী</li>
+                                </ul>
+                                <p>রক্তদানের পর রক্তের নিম্নলিখিত পরীক্ষাগুলো করা হয়:</p>
+                                <ul>
+                                    <li>এইচআইভি/এইডস</li>
+                                    <li>হেপাটাইটিস বি ও সি</li>
+                                    <li>সিফিলিস</li>
+                                    <li>ম্যালেরিয়া (প্রয়োজন হলে)</li>
+                                    <li>রক্তের গ্রুপ নির্ধারণ</li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navigation">
+        <div class="icons">
+            <input type="radio" name="nav" id="nav-home" class="nav-radio" />
+            <label for="nav-home" class="nav-icon" onclick="window.location.href='index.html'">
+                <i class="fas fa-home"></i>
+                <span class="nav-text bangla-text">হোম</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-register" class="nav-radio" />
+            <label for="nav-register" class="nav-icon" onclick="window.location.href='donor-registration.html'">
+                <i class="fas fa-user-plus"></i>
+                <span class="nav-text bangla-text">নিবন্ধন</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-request" class="nav-radio" />
+            <label for="nav-request" class="nav-icon" onclick="window.location.href='blood-request.html'">
+                <i class="fas fa-tint"></i>
+                <span class="nav-text bangla-text">অনুরোধ</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-search" class="nav-radio" />
+            <label for="nav-search" class="nav-icon" onclick="window.location.href='donor-search.html'">
+                <i class="fas fa-search"></i>
+                <span class="nav-text bangla-text">খুঁজুন</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-info" class="nav-radio" checked />
+            <label for="nav-info" class="nav-icon" onclick="window.location.href='information.html'">
+                <i class="fas fa-info-circle"></i>
+                <span class="nav-text bangla-text">তথ্য</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Emergency WhatsApp Button -->
+    <a href="emergency-contact.html" class="emergency-btn pulse-slow">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <!-- Developer Credit -->
+    <div class="text-center mt-4 small text-muted fade-in" style="animation-delay: 0.5s;">
+        Developed by MD Tasrik Hossain
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to update time and date separately
+        function updateDateTime() {
+            const now = new Date();
+
+            // Time options
+            const timeOptions = {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+
+            // Date options
+            const dateOptions = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('bn-BD', timeOptions);
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('bn-BD', dateOptions);
+        }
+
+        // Update every second
+        setInterval(updateDateTime, 1000);
+
+        // Initial call
+        updateDateTime();
+        // Highlight current page in navigation
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navItems = {
+                'index.html': 'nav-home',
+                'donor-registration.html': 'nav-register',
+                'blood-request.html': 'nav-request',
+                'donor-search.html': 'nav-search',
+                'information.html': 'nav-info'
+            };
+
+            if (navItems[currentPage]) {
+                document.getElementById(navItems[currentPage]).checked = true;
+            }
+            
+            // Add animation to accordion items when they open
+            document.querySelectorAll('.accordion-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = this.getAttribute('data-bs-target');
+                    const collapseElement = document.querySelector(target);
+                    if (collapseElement) {
+                        collapseElement.classList.add('animate__animated', 'animate__fadeIn');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Request - RJF Blood Connect</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon Links -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" sizes="16x16" type="image/png">
+    <link rel="icon" href="favicon.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="favicon.png">
+</head>
+
+<body>
+    <!-- Header with Logo and Time -->
+    <header class="header">
+        <!-- Time and Date above the header content -->
+        <div class="container-fluid py-1 bg-light">
+            <div class="row">
+                <div class="col-6 text-start">
+                    <!-- Empty left side -->
+                </div>
+                <div class="col-6 text-end">
+                    <div id="currentDate" class="bangla-text date-display"></div>
+                    <div id="currentTime" class="bangla-text time-display"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-2">
+                    <img src="roktojoba-logo.png" alt="Roktojoba Foundation Logo" class="logo">
+                </div>
+                <div class="col-8 text-center">
+                    <h1>রক্তের অনুরোধ</h1>
+                    <p class="tagline">Blood Donate. Connect. Save</p>
+                </div>
+                <div class="col-2 text-end">
+                    <!-- You can keep this empty or add something else -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-tint"></i> রক্তের অনুরোধ ফর্ম
+                    </div>
+                    <div class="card-body">
+                        <form id="requestForm" class="needs-validation" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="requestDivision" class="form-label">বিভাগ</label>
+                                    <select class="form-select" id="requestDivision" required>
+                                        <option value="" selected disabled>বিভাগ নির্বাচন করুন</option>
+                                        <!-- Divisions will be populated by JavaScript -->
+                                    </select>
+                                    <div class="invalid-feedback">বিভাগ নির্বাচন করুন</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="requestDistrict" class="form-label">জেলা</label>
+                                    <select class="form-select" id="requestDistrict" required disabled>
+                                        <option value="" selected disabled>জেলা নির্বাচন করুন</option>
+                                    </select>
+                                    <div class="invalid-feedback">জেলা নির্বাচন করুন</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="requestUpazila" class="form-label">উপজেলা</label>
+                                    <select class="form-select" id="requestUpazila" required disabled>
+                                        <option value="" selected disabled>উপজেলা নির্বাচন করুন</option>
+                                    </select>
+                                    <div class="invalid-feedback">উপজেলা নির্বাচন করুন</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="requestLocation" class="form-label">রক্তদানের স্থান
+                                        (হাসপাতাল/ঠিকানা)</label>
+                                    <input type="text" class="form-control" id="requestLocation" required>
+                                    <div class="invalid-feedback">রক্তদানের স্থান লিখুন</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="requestBloodGroup" class="form-label">রক্তের গ্রুপ</label>
+                                    <select class="form-select" id="requestBloodGroup" required>
+                                        <option value="" selected disabled>রক্তের গ্রুপ নির্বাচন করুন</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </select>
+                                    <div class="invalid-feedback">রক্তের গ্রুপ নির্বাচন করুন</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="bloodAmount" class="form-label">রক্তের পরিমাণ (ব্যাগ)</label>
+                                    <input type="number" class="form-control" id="bloodAmount" min="1" value="1"
+                                        required>
+                                    <div class="invalid-feedback">রক্তের পরিমাণ লিখুন (অন্তত 1 ব্যাগ)</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="requesterPhone" class="form-label">যোগাযোগ নম্বর (whatsapp
+                                        number)</label>
+                                    <input type="tel" class="form-control" id="requesterPhone" required
+                                        pattern="^(01[3-9]\d{8})$">
+                                    <div class="invalid-feedback">সঠিক মোবাইল নম্বর লিখুন (01XXXXXXXXX)</div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="neededDate" class="form-label">প্রয়োজনীয় তারিখ</label>
+                                    <input type="date" class="form-control" id="neededDate" required>
+                                    <div class="invalid-feedback">তারিখ নির্বাচন করুন</div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="neededTime" class="form-label">প্রয়োজনীয় সময়</label>
+                                    <input type="time" class="form-control" id="neededTime">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="fas fa-bell"></i> রক্তের অনুরোধ পাঠান এবং WhatsApp-এ নিশ্চিত করুন
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header bg-info text-white">
+                        <i class="fas fa-info-circle"></i> গুরুত্বপূর্ণ তথ্য
+                    </div>
+                    <div class="card-body">
+                        <div class="bangla-text">
+                            <h5>রক্ত অনুরোধ করার আগে জানুন:</h5>
+                            <ul>
+                                <li>রক্তের জরুরি প্রয়োজন ছাড়া অনুরোধ করা থেকে বিরত থাকুন</li>
+                                <li>প্রদত্ত সকল তথ্য সঠিকভাবে পূরণ করুন</li>
+                                <li>স্বাস্থ্যবিধি মেনে রক্ত পরিসঞ্চালন নিশ্চিত করুন।</li>
+                                <li>রক্তদাতাদের সাথে সৌজন্যমূলক আচরণ করুন</li>
+                                <li>রক্তদাতাদের যাতায়াত খরচ বহনের ব্যবস্থা করুন (যদি সম্ভব হয়)</li>
+                                <li>রক্তদানের পর রক্তদাতাকে ধন্যবাদ জানান</li>
+                            </ul>
+                            <p class="mt-3"><strong>জরুরি হেল্পলাইন:</strong> <a href="tel:01960506601"
+                                    class="text-danger">০১৯৬০৫০৬৬০১</a> (২৪/৭)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="navigation">
+        <div class="icons">
+            <input type="radio" name="nav" id="nav-home" class="nav-radio" />
+            <label for="nav-home" class="nav-icon" onclick="window.location.href='index.html'">
+                <i class="fas fa-home"></i>
+                <span class="nav-text bangla-text">হোম</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-register" class="nav-radio" />
+            <label for="nav-register" class="nav-icon" onclick="window.location.href='donor-registration.html'">
+                <i class="fas fa-user-plus"></i>
+                <span class="nav-text bangla-text">নিবন্ধন</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-request" class="nav-radio" />
+            <label for="nav-request" class="nav-icon" onclick="window.location.href='blood-request.html'">
+                <i class="fas fa-tint"></i>
+                <span class="nav-text bangla-text">অনুরোধ</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-search" class="nav-radio" />
+            <label for="nav-search" class="nav-icon" onclick="window.location.href='donor-search.html'">
+                <i class="fas fa-search"></i>
+                <span class="nav-text bangla-text">খুঁজুন</span>
+            </label>
+
+            <input type="radio" name="nav" id="nav-info" class="nav-radio" />
+            <label for="nav-info" class="nav-icon" onclick="window.location.href='information.html'">
+                <i class="fas fa-info-circle"></i>
+                <span class="nav-text bangla-text">তথ্য</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Emergency WhatsApp Button -->
+    <a href="emergency-contact.html" class="emergency-btn">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">সফল!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="successMessage">
+                    অপারেশন সফলভাবে সম্পন্ন হয়েছে।
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">ত্রুটি!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="errorMessage">
+                    একটি ত্রুটি ঘটেছে।
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">বন্ধ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Developer Credit -->
+    <div class="text-center mt-4 small text-muted">
+        Developed by MD Tasrik Hossain |
+        <a href="https://www.facebook.com/md.tasrik.hossain" class="text-decoration-none">Contact Developer</a>
+    </div>
+
+    <!-- Firebase and other scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, where, getDocs } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBSgyeYCbyB8cMFdqMcNtDZeL4aM-_FfQ4",
+            authDomain: "rjf-blood-connect.firebaseapp.com",
+            databaseURL: "https://rjf-blood-connect-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "rjf-blood-connect",
+            storageBucket: "rjf-blood-connect.firebasestorage.app",
+            messagingSenderId: "536870508483",
+            appId: "1:536870508483:web:1ce2211ec28f79ce514f76",
+            measurementId: "G-34RDD8GL9C"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // WhatsApp link generator
+        function generateWhatsAppLink(phone, message) {
+            const formattedPhone = phone.startsWith('+') ? phone.substring(1) :
+                phone.startsWith('88') ? phone :
+                    phone.startsWith('0') ? '88' + phone : '880' + phone;
+
+            const encodedMessage = encodeURIComponent(message);
+            return `https://wa.me/${formattedPhone}?text=${encodedMessage}`;
+        }
+
+        // Function to send notifications to potential donors
+        async function sendBloodRequestNotifications(requestData) {
+            try {
+                const donorsQuery = query(
+                    collection(db, 'donors'),
+                    where('bloodGroup', '==', requestData.bloodGroup),
+                    where('district', '==', requestData.district)
+                );
+
+                const querySnapshot = await getDocs(donorsQuery);
+                console.log(`Found ${querySnapshot.size} potential donors`);
+                return querySnapshot.size;
+            } catch (error) {
+                console.error("Error sending notifications: ", error);
+                throw error;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            populateDivisions('requestDivision');
+            setupFormValidation('requestForm');
+
+            document.getElementById('requestDivision').addEventListener('change', function () {
+                const divisionName = this.value;
+                updateDistricts(divisionName, 'requestDistrict');
+            });
+
+            document.getElementById('requestDistrict').addEventListener('change', function () {
+                const districtName = this.value;
+                const divisionName = document.getElementById('requestDivision').value;
+                updateUpazilas(divisionName, districtName, 'requestUpazila');
+            });
+
+            // Handle blood request form submission
+            document.getElementById('requestForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+
+                if (!this.checkValidity()) {
+                    e.stopPropagation();
+                    return;
+                }
+
+                // Get raw phone number (exactly as entered, only digits)
+                const rawPhone = document.getElementById('requesterPhone').value.replace(/\D/g, '');
+                const neededDate = document.getElementById('neededDate').value;
+                let neededTime = document.getElementById('neededTime').value;
+
+                // Convert time to AM/PM format if time is provided
+                if (neededTime) {
+                    const [hours, minutes] = neededTime.split(':');
+                    const parsedHours = parseInt(hours);
+                    const ampm = parsedHours >= 12 ? 'PM' : 'AM';
+                    const displayHours = parsedHours % 12 || 12;
+                    neededTime = `${displayHours}:${minutes} ${ampm}`;
+                } else {
+                    neededTime = 'যত তাড়াতাড়ি সম্ভব';
+                }
+
+                const requestData = {
+                    division: document.getElementById('requestDivision').value,
+                    district: document.getElementById('requestDistrict').value,
+                    upazila: document.getElementById('requestUpazila').value,
+                    location: document.getElementById('requestLocation').value,
+                    bloodGroup: document.getElementById('requestBloodGroup').value,
+                    bloodAmount: document.getElementById('bloodAmount').value,
+                    phone: rawPhone, // Stored exactly as 01XXXXXXXXX (no 88 prefix)
+                    neededDate: neededDate,
+                    neededTime: neededTime,
+                    requestDate: new Date().toISOString(),
+                    createdAt: new Date(), // Timestamp when the request was created
+                    status: "pending"
+                };
+
+                try {
+                    // Save request with original phone format
+                    await addDoc(collection(db, 'requests'), requestData);
+
+                    // Send notifications
+                    await sendBloodRequestNotifications(requestData);
+
+                    // Generate WhatsApp message
+                    const whatsappMessage = `রক্তের অনুরোধ নিশ্চিতকরণ:\n\nবিভাগ: ${requestData.division}\nজেলা: ${requestData.district}\nউপজেলা: ${requestData.upazila}\nস্থান: ${requestData.location}\nরক্তের গ্রুপ: ${requestData.bloodGroup}\nপরিমাণ: ${requestData.bloodAmount} ব্যাগ\nযোগাযোগ: ${requestData.phone}\nতারিখ: ${neededDate}\nসময়: ${neededTime}`;
+
+                    // Generate WhatsApp link 
+                    const whatsappLink = generateWhatsAppLink("8801960506601", whatsappMessage);
+
+                    // Open WhatsApp
+                    window.open(whatsappLink, '_blank');
+
+                    // Show success message with original phone number
+                    document.getElementById('successMessage').textContent =
+                        `রক্তের অনুরোধ সফলভাবে জমা দেওয়া হয়েছে! আপনার রক্তের গ্রুপের উপযুক্ত দাতাদের কাছে SMS এ বিজ্ঞপ্তি পাঠানো হবে।
+             
+            অবস্থান: ${requestData.district}, ${requestData.upazila}
+            রক্তের গ্রুপ: ${requestData.bloodGroup}
+            পরিমাণ: ${requestData.bloodAmount} ব্যাগ
+            যোগাযোগ: ${requestData.phone}
+            তারিখ: ${neededDate}
+            সময়: ${neededTime}`;
+
+                    const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                    successModal.show();
+                    this.reset();
+                    this.classList.remove('was-validated');
+
+                    // Open WhatsApp
+                    window.open(whatsappLink, '_blank');
+                } catch (error) {
+                    document.getElementById('errorMessage').textContent =
+                        'ত্রুটি: ' + error.message;
+                    const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+                    errorModal.show();
+                }
+            });
+        });
+        // Function to update time and date separately
+        function updateDateTime() {
+            const now = new Date();
+
+            // Time options
+            const timeOptions = {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+
+            // Date options
+            const dateOptions = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString('bn-BD', timeOptions);
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('bn-BD', dateOptions);
+        }
+
+        // Update every second
+        setInterval(updateDateTime, 1000);
+
+        // Initial call
+        updateDateTime();
+        // Highlight current page in navigation
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const navItems = {
+                'index.html': 'nav-home',
+                'donor-registration.html': 'nav-register',
+                'blood-request.html': 'nav-request',
+                'donor-search.html': 'nav-search',
+                'information.html': 'nav-info'
+            };
+
+            if (navItems[currentPage]) {
+                document.getElementById(navItems[currentPage]).checked = true;
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
